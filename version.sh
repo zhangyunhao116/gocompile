@@ -1,0 +1,1 @@
+cat /usr/local/go/COMPILE_INFO
