@@ -2,4 +2,4 @@
 set -e
 
 sh compile.sh
-sh install.sh go.tar.gz
+sh install.sh results/go.tar.gz

@@ -2,9 +2,5 @@
 set -e
 
 INSTALL_PACKAGE=$1
-
-rm -rf go
-tar -xzf "${INSTALL_PACKAGE}"
-sudo rm -rf /usr/local/go
-sudo mv go /usr/local/
-rm -rf go
+if [ -z "${INSTALL_PACKAGE}" ]; then INSTALL_PACKAGE=results/go.tar.gz; fi
+tar -C /usr/local -xzf "${INSTALL_PACKAGE}"

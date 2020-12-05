@@ -1,3 +1,8 @@
 .DS_Store
+test.go
+test.sh
+.vscode/
 go/
 golang-go/
+results/
+workspace/

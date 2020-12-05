@@ -1,1 +1,1 @@
-cat /usr/local/go/COMPILE_INFO
+cat $(go env GOROOT)/COMPILE_INFO

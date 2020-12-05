@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 set -e
 
-rm -rf go
+rm -rf workspace
 if [ "$1"x = "all"x ]; then
+  rm -rf go
   rm -rf golang-go
-  rm -rf *.tar.gz
+  rm -rf workspace
+  rm -rf results
 fi
