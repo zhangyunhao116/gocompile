@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-SCRIPT_VERSION=v0.1.0
+SCRIPT_VERSION=v0.1.1
 
 BUILD_OS=$1             # Default `(go env GOOS)`
 BUILD_ARCH=$2           # Default `(go env GOARCH)`
@@ -27,7 +27,7 @@ mkdir -p "$CUR_DIR/$RESULTSPACE"
 HOST_OS=$(go env GOHOSTOS)
 HOST_ARCH=$(go env GOHOSTARCH)
 HOST_GO=$(go version)
-GCCVERSION=$(gcc --version | grep ^gcc | sed 's/^.* //g')
+GCCVERSION=$(gcc --version | grep ^gcc)
 TIME=$(date "+%Y-%m-%d %H:%M:%S")" UTC+8"
 export GOROOT_BOOTSTRAP=/usr/local/go
 
@@ -52,9 +52,9 @@ echo "----------------------------"
 cd ..
 
 # Step1: make a copy and build. (now we in ROOT directory)
+rm -rf "${WORKSPACE}"/go
 cp -r "${BUILD_DIRNAME}" "${WORKSPACE}"/go
 cd "${WORKSPACE}"/go
-git clean -xdf # remove all files in .gitignore
 cd src
 ./make.bash
 cd ../..
