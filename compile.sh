@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-SCRIPT_VERSION=v0.1.1
+SCRIPT_VERSION=v0.1.2
 
 BUILD_OS=$1             # Default `(go env GOOS)`
 BUILD_ARCH=$2           # Default `(go env GOARCH)`
@@ -37,14 +37,14 @@ COMMIT=$(git rev-parse HEAD)
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 MODIFIED=$(git ls-files -m)
 echo "----------------------------" 
-echo WORKSPACE "  ${WORKSPACE}" "${WORKSPACE_ABS}"
-echo RESULTSPACE "${RESULTSPACE}" "${RESULTSPACE_ABS}"
+echo WORKSPACE "  ${WORKSPACE_ABS}"
+echo RESULTSPACE "${RESULTSPACE_ABS}"
 echo TIME "    ${TIME}" # keep sync with below
 echo BUILD "   ${BUILD_OS}"/"${BUILD_ARCH}"
 echo SCRIPT "  ${SCRIPT_VERSION}"
 echo HOST_GO " ${HOST_GO}"
 echo HOST_GCC "${GCCVERSION}"
-echo FromHOST "${HOST_OS}"/"${HOST_ARCH}"
+echo HOST_ENV "${HOST_OS}"/"${HOST_ARCH}"
 echo BRANCH "  ${BRANCH}"
 echo COMMIT "  ${COMMIT}"
 echo "\nMODIFIED:\n${MODIFIED}"
@@ -82,7 +82,7 @@ echo BUILD "   ${BUILD_OS}"/"${BUILD_ARCH}" >> COMPILE_INFO
 echo SCRIPT "  ${SCRIPT_VERSION}" >> COMPILE_INFO
 echo HOST_GO " ${HOST_GO}" >> COMPILE_INFO
 echo HOST_GCC "${GCCVERSION}" >> COMPILE_INFO
-echo FromHOST "${HOST_OS}"/"${HOST_ARCH}" >> COMPILE_INFO
+echo HOST_ENV "${HOST_OS}"/"${HOST_ARCH}" >> COMPILE_INFO
 echo BRANCH "  ${BRANCH}" >> COMPILE_INFO
 echo COMMIT "  ${COMMIT}" >> COMPILE_INFO
 echo "\nMODIFIED:\n${MODIFIED}" >> COMPILE_INFO
