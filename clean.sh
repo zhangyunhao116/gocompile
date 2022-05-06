@@ -5,6 +5,7 @@ rm -rf workspace
 if [ "$1"x = "all"x ]; then
   rm -rf go
   rm -rf golang-go
+  rm -rf base-go
   rm -rf workspace
   rm -rf results
 fi

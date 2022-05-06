@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 set -e
 
-SCRIPT_VERSION=v0.1.2
+SCRIPT_VERSION=v0.2.0
 
-BUILD_OS=$1             # Default `(go env GOOS)`
-BUILD_ARCH=$2           # Default `(go env GOARCH)`
-BUILD_DIRNAME=$3        # Default `golang-go`
+BUILD_DIRNAME=$1        # Default `golang-go`
+BUILD_OS=$2             # Default `(go env GOOS)`
+BUILD_ARCH=$3           # Default `(go env GOARCH)`
 
 # Default values.
 if [ "$BUILD_OS"x != ""x ];      then  export GOOS=$BUILD_OS;     else BUILD_OS=$(go env GOOS); fi

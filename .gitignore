@@ -1,8 +1,10 @@
+*.tar.gz
 .DS_Store
 test.go
 test.sh
 .vscode/
 go/
 golang-go/
+base-go/
 results/
 workspace/
