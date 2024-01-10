@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
 set -e
 
-SCRIPT_VERSION=v0.2.0
+SCRIPT_VERSION=v0.2.1
 
 BUILD_DIRNAME=$1        # Default `golang-go`
 BUILD_OS=$2             # Default `(go env GOOS)`
 BUILD_ARCH=$3           # Default `(go env GOARCH)`
+
+# Save and remove GOEXPERIMENT.
+goexperiment="$GOEXPERIMENT"
+unset GOEXPERIMENT
 
 # Default values.
 if [ "$BUILD_OS"x != ""x ];      then  export GOOS=$BUILD_OS;     else BUILD_OS=$(go env GOOS); fi
@@ -50,6 +54,9 @@ echo COMMIT "  ${COMMIT}"
 echo "\nMODIFIED:\n${MODIFIED}"
 echo "----------------------------"
 cd ..
+
+# Step0: set env variables.
+export GOEXPERIMENT="${goexperiment}"
 
 # Step1: make a copy and build. (now we in ROOT directory)
 rm -rf "${WORKSPACE}"/go
